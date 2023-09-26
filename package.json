@@ -1,0 +1,28 @@
+{
+  "name": "nokia-md-cli",
+  "displayName": "Nokia SR OS MD-CLI Syntax Highlighting",
+  "description": "Syntax Highlighting for Nokia MD-CLI",
+  "keywords": ["nokia", "sros", "md-cli", "mdcli"],
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.82.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "mdcli",
+      "aliases": ["Nokia MD-CLI", "mdcli"],
+      "extensions": [".sros", ".mdcli", ".cfg", ".cfg", ".cfg.1", ".cfg.2", ".cfg.3", ".cfg.4", ".cfg.5", ".cfg.6", ".cfg.7", ".cfg.8", ".cfg.9", ".cfg.10", ".cfg.11", ".cfg.12", ".cfg.13", ".cfg.14", ".cfg.15", ".cfg.16", ".cfg.17", ".cfg.18", ".cfg.19", ".cfg.20", ".cfg.21", ".cfg.22", ".cfg.23", ".cfg.24", ".cfg.25", ".cfg.26", ".cfg.27", ".cfg.28", ".cfg.29", ".cfg.30", ".cfg.31", ".cfg.32", ".cfg.33", ".cfg.34", ".cfg.35", ".cfg.36", ".cfg.37", ".cfg.38", ".cfg.39", ".cfg.40", ".cfg.41", ".cfg.42", ".cfg.43", ".cfg.44", ".cfg.45", ".cfg.46", ".cfg.47", ".cfg.48", ".cfg.49", ".cfg.50 "],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "mdcli",
+      "scopeName": "text.mdcli",
+      "path": "./syntaxes/mdcli.tmLanguage.json"
+    }]
+  },
+  "pricing": "Free",
+  "publisher": "TomYoung"
+}

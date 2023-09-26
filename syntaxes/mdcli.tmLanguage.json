@@ -1,0 +1,100 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "MD-CLI",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#addresses"
+		},
+		{
+			"comment": "configure test",
+			"name": "keyword.control.mdcli",
+			"match": "(?<=^|\\s)(/?(?:configure|admin-state|admin|bof|debug|environment|li|info))"
+		},
+
+		{
+			"comment": "Config sections",
+			"name": "entity.name.class.mdcli",
+			"match": "(?<=^|\\s)(aaa|application-assurance|apply-groups|bfd|bmp|call-trace|card|cflowd|chassis|connection-profile|esa|eth-cfm|eth-ring|filter|fwd-path-ext|group-encryption|groups|ipsec|isa|lag|log|macsec|mcac|mirror|multicast-management|oam-pm|openconfig|openflow|policy-options|port|port-policy|port-xc|pw-port|python|qos|redundancy|router|routing-options|saa|satellite|service|sfm|subscriber-mgmt|system|test-oam|vrrp)(?=[ \n;])"
+		},
+		{
+			"comment": "Keywords",
+			"name": "constant.language.mdcli",
+			"match": "(?<=^|\\s)(enable|disable|true|false|accept|reject|next-entry|next-policy)(?=[ \n;])"
+		},
+		{
+			"comment": "Control",
+			"name": "invalid.illegal.mdcli",
+			"match": "(?<=^)(/?(commit|discard|validate|delete|top|back|exit))"
+		},
+		{
+			"comment": "Other Text",
+			"name": "entity.other.attribute-name.mdcli",
+			"match": "(?<=^|\\s)([a-z]+[a-z0-9-]*)(?=[ \n;])"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"comment": "Other Numeric",
+			"name": "constant.numeric.mdcli",
+			"match": "(?<=^|\\s)([0-9]+)(?=[ \n;])"
+		}
+	],
+	"repository": {
+		"addresses": {
+			"patterns": [
+				{
+					"match": "((?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(?:.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3})(\/(?:3[0-2]|[0-2]?[0-9]))?",
+					"comment": "IPv4 Addresses (with or without mask)",
+					"captures": {
+						"1": {
+							"name": "keyword.control.mdcli"
+						},
+						"2": {
+							"name": "constant.character.mdcli"
+						}
+					}
+				},
+				{
+					"comment": "IPv6 Addresses, with or without mask",
+					"match": "((?<=^|\\s|\\b|\\W)(?:[0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,7}:|(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:(?::[0-9a-fA-F]{1,4}){1,6}|:(?:(?::[0-9a-fA-F]{1,4}){1,7}|:))(\/(?:[0-9]{1,2}\\b|1[01][0-9]\\b|12[0-8]\\b))*(?=$|\\s|\\W)",
+					"captures": {
+						"1": {
+							"name": "keyword.control.mdcli"
+						},
+						"2": {
+							"name": "constant.character.mdcli"
+						}
+					}
+					
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"match": "#.*$\\n?",
+					"name": "comment.line.number-sign.mdcli"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.mdcli",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.mdcli",
+					"match": "\\\\."
+				},
+				{
+					"include": "#addresses"
+				}
+			]
+		}
+	},
+	"scopeName": "text.mdcli"
+}
